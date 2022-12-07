@@ -11,8 +11,9 @@
   ],
   "autoload": {
     "psr-4": {
-      "wfm\\": "vendor/wfm",
-      "app\\": "app"
+      "core\\": "vendor/core",
+      "app\\": "app",
+      "test\\": "test"
     }
   },
   "require": {

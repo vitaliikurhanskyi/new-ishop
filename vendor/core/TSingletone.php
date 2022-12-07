@@ -1,7 +1,7 @@
 <?php
 
 
-namespace wfm;
+namespace core;
 
 
 trait TSingletone
