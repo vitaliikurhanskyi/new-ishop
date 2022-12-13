@@ -148,3 +148,6 @@
 [2022-12-07 19:15:49] Error Message: Error | File: C:\OpenServer\domains\new-ishop\public\index.php |
             Line: 14
 =================
+[2022-12-13 17:39:02] Error Message: Unsupported operand types: string + string | File: C:\OpenServer\domains\new-ishop\vendor\core\Router.php |
+            Line: 47
+=================

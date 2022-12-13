@@ -22,7 +22,47 @@ class Router
     }
 
     public static function dispatch($url) {
-        debug($url);
+        if(self::matchRoute($url)) {
+            echo "Ok";
+        } else {
+            echo "No";
+        }
+    }
+
+    public static function matchRoute($url): bool {
+        foreach (self::$routes as $patern => $route) {
+            if(preg_match("#{$patern}#i", $url, $matches)) {
+                //debug($matches);
+                foreach ($matches as $key => $value) {
+                    if(is_string($key)) {
+                        $route[$key] = $value;
+                    }
+                }
+                if(empty($route['action'])) {
+                    $route['action'] = 'index';
+                }
+                if(!isset($route['admin_prefix'])) {
+                    $route['admin_prefix'] = '';
+                } else {
+                    $route['admin_prefix'] = '\\';
+                }
+                $route['controller'] = self::upperCamelCase($route['controller']);
+                debug($route);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected static function upperCamelCase($name): string {
+        $name = str_replace('-', ' ', $name);
+        $name = ucwords($name);
+        $name = str_replace(' ', '', $name);
+        return $name;
+    }
+
+    protected static function lowerCamelCase($name): string {
+        return lcfirst(self::upperCamelCase($name));
     }
 
 }

@@ -3,6 +3,8 @@
  * Front Controller
  * */
 
+echo '7 finish<hr>';
+
 if(PHP_MAJOR_VERSION < 8) {
     die("You need version PHP more or equal 8.0");
 }
@@ -13,7 +15,9 @@ require_once CONFIG . '/routes.php';
 
 new \core\App();
 
-debug(\core\Router::getRoutes());
+
+
+//debug(\core\Router::getRoutes());
 
 
 
