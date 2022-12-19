@@ -3,7 +3,7 @@
  * Front Controller
  * */
 
-echo '7 finish<hr>';
+echo 'video 13 - 24:00 <hr>';
 
 if(PHP_MAJOR_VERSION < 8) {
     die("You need version PHP more or equal 8.0");
@@ -17,18 +17,6 @@ new \core\App();
 
 
 
-//debug(\core\Router::getRoutes());
-
-
-
-//throw new Exception("Error");
-
-
-
 
 
 ?>
-
-
-
-

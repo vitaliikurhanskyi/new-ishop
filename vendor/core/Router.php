@@ -21,11 +21,41 @@ class Router
         return self::$route;
     }
 
+    protected static function removeQueryString($url) {
+        if($url) {
+            $params = explode('&', $url, 2);
+            if(false === str_contains($params[0], '=')) {
+                return rtrim($params[0], '/');
+            }
+        }
+        return '';
+    }
+
     public static function dispatch($url) {
-        if(self::matchRoute($url)) {
-            echo "Ok";
+        $url = self::removeQueryString($url);
+        if(self::matchRoute($url)) {           
+            $controller = 'app\controllers\\' . self::$route['admin_prefix'] . self::$route['controller'] . 'Controller';
+            if (class_exists($controller)) {
+
+                /** @var Controller $controllerObject */
+
+                $controllerObject = new $controller(self::$route);
+
+                $controllerObject->getModel();
+
+                $action = self::lowerCamelCase(self::$route['action'] . 'Action');
+                if(method_exists($controllerObject, $action)) {
+                    $controllerObject->$action();
+                    $controllerObject->getView();
+                } else {
+                    throw new \Exception("Method {$controller}::{$action} not found!!!", 404);
+                }               
+            } else {
+                throw new \Exception("Controller {$controller} not found!!!", 404);
+            }
+
         } else {
-            echo "No";
+            throw new \Exception("Page not found!!!", 404);
         }
     }
 
@@ -44,10 +74,10 @@ class Router
                 if(!isset($route['admin_prefix'])) {
                     $route['admin_prefix'] = '';
                 } else {
-                    $route['admin_prefix'] = '\\';
+                    $route['admin_prefix'] .= '\\';
                 }
                 $route['controller'] = self::upperCamelCase($route['controller']);
-                debug($route);
+                self::$route = $route;
                 return true;
             }
         }
