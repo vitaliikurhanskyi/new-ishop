@@ -1138,3 +1138,24 @@
 			AND pd.languag' at line 3 | File: E:\OpenServer\domains\new-ishop\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php |
             Line: 206
 =================
+[2023-01-03 16:55:33] Error Message: No conection to Data Base! | File: C:\OpenServer\domains\new-ishop\vendor\core\Db.php |
+            Line: 15
+=================
+[2023-01-03 16:55:33] Error Message: Page not found!!! | File: C:\OpenServer\domains\new-ishop\vendor\core\Router.php |
+            Line: 59
+=================
+[2023-01-03 17:06:36] Error Message: Controller app\controllers\admin\AfeAfewfController not found!!! | File: C:\OpenServer\domains\new-ishop\vendor\core\Router.php |
+            Line: 55
+=================
+[2023-01-03 17:11:01] Error Message: Controller app\controllers\admin\AfeAfewfController not found!!! | File: C:\OpenServer\domains\new-ishop\vendor\core\Router.php |
+            Line: 55
+=================
+[2023-01-03 17:11:09] Error Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p.id = pd.product_id
+			WHERE p.status = 1
+			AND p.hit = 1
+			AND pd.lang...' at line 3 | File: C:\OpenServer\domains\new-ishop\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php |
+            Line: 206
+=================
+[2023-01-03 17:12:43] Error Message: Call to undefined method app\models\Main::getHits() | File: C:\OpenServer\domains\new-ishop\app\controllers\MainController.php |
+            Line: 24
+=================
