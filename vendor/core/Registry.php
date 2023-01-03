@@ -23,6 +23,8 @@ class Registry
 
     ## test Singletone
 
+    
+
     protected static array $properties = [];
 
     public function setProperty($name, $value) {

@@ -3,28 +3,28 @@
 namespace app\controllers;
 
 use app\models\Main;
-use core\Controller;
-use RedBeanPHP\R;
+use \RedBeanPHP\R;
 
 /** @property Main $model */
-class MainController extends Controller {
+class MainController extends AppController {
 
 	//public false|string $layout = 'default';
 
 	public function indexAction() {
-		//echo "In Main Controller";
 		//$this->layout = 'default';
-		//$names = ['Vasy', 'Pety', 'Galy'];
-
 		//$names = R::findAll('name');
+		//$names = $this->model->get_names();
+		//$this->set(compact('names'));
+		//$this->setMeta('Main Page 123', 'ddescription', 'kkeywordsss');
+		//$one_name = R::getRow('SELECT * FROM name WHERE id = 2');
 
-		$names = $this->model->get_names();
+		//Slides in main page
+		$slides = R::findAll('slider');
+		
+		$products = $this->model->getHits(1, 3);
 
-		$one_name = R::getRow('SELECT * FROM name WHERE id = 2');
+		$this->set(compact('slides', 'products'));
 
-		$this->setMeta('Main Page', 'ddescription', 'kkeywordsss');
-		//$this->set(['test' => 'TEST VAR', 'name' => 'John']);
-		$this->set(compact('names'));
 	}
 
 }

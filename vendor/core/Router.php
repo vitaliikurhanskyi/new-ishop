@@ -44,6 +44,7 @@ class Router
                 $controllerObject->getModel();
 
                 $action = self::lowerCamelCase(self::$route['action'] . 'Action');
+
                 if(method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
                     $controllerObject->getView();
