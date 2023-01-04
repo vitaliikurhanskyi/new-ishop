@@ -1,1 +1,3 @@
 *.log
+tmp/logs/errors.log
+/tmp/logs/errors.log
