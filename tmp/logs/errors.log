@@ -1138,3 +1138,30 @@
 			AND pd.languag' at line 3 | File: E:\OpenServer\domains\new-ishop\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php |
             Line: 206
 =================
+[2023-01-04 12:33:00] Error Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p.id = pd.product_id
+			WHERE p.status = 1
+			AND p.hit = 1
+			AND pd.languag' at line 3 | File: E:\OpenServer\domains\new-ishop\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php |
+            Line: 206
+=================
+[2023-01-04 12:33:01] Error Message: Page not found!!! | File: E:\OpenServer\domains\new-ishop\vendor\core\Router.php |
+            Line: 59
+=================
+[2023-01-04 12:34:04] Error Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p.id = pd.product_id
+			WHERE p.status = 1
+			AND p.hit = 1
+			AND pd.languag' at line 3 | File: E:\OpenServer\domains\new-ishop\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php |
+            Line: 206
+=================
+[2023-01-04 12:34:08] Error Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p.id = pd.product_id
+			WHERE p.status = 1
+			AND p.hit = 1
+			AND pd.languag' at line 3 | File: E:\OpenServer\domains\new-ishop\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php |
+            Line: 206
+=================
+[2023-01-04 12:37:31] Error Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p.id = pd.product_id
+			WHERE p.status = 1
+			AND p.hit = 1
+			AND pd.languag' at line 3 | File: E:\OpenServer\domains\new-ishop\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php |
+            Line: 206
+=================
