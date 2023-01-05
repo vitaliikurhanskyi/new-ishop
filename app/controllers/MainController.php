@@ -21,7 +21,9 @@ class MainController extends AppController {
 		//Slides in main page
 		$slides = R::findAll('slider');
 		
-		$products = $this->model->getHits(1, 3);
+		$products = $this->model->getHits(1, 6);
+
+		//dd($products, 1);
 
 		$this->set(compact('slides', 'products'));
 
