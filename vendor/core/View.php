@@ -46,7 +46,12 @@ class View {
 	}
 
 	public function getMeta() {
-		$out = '<title>' . htmlspecialchars($this->meta['title']) . '</title>' . PHP_EOL;
+		if(!empty($this->meta['title'])) {
+			$out = '<title>' . htmlspecialchars(App::$app->getProperty('site_name') . " | " . $this->meta['title']) . '</title>' . PHP_EOL;
+		} else {
+			$out = '<title>' . htmlspecialchars(App::$app->getProperty('site_name')) . '</title>' . PHP_EOL;
+		}
+		
 		$out .= '<meta name="description" content="' . htmlspecialchars($this->meta['description']) . '">' . PHP_EOL;
 		$out .= '<meta name="keywords" content="' . htmlspecialchars($this->meta['keywords']) . '">' . PHP_EOL;
 		return $out;
@@ -54,15 +59,18 @@ class View {
 
 	public function getDbLogs() {
 		if(DEBUG) {
+			if(R::testConnection()) {}
+
 			$logs = R::getDatabaseAdapter()
-					->getDatabase()
-					->getLogger();
+				->getDatabase()
+				->getLogger();
 			$logs = array_merge($logs->grep('SELECT'), 
 				$logs->grep('select'),
 				$logs->grep('INSERT'),
 				$logs->grep('UPDATE'),
 				$logs->grep('DELETE'));
 			debug($logs);
+						
 		}
 	}
 

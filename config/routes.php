@@ -6,6 +6,9 @@ Router::add('^admin/?$', ['controller' => 'Main', 'action' => 'index', 'admin_pr
 
 Router::add('^admin/(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$', ['admin_prefix' => 'admin']);
 
+//PRODUCTS CONTROLLER
+Router::add('^product/(?P<slug>[a-z0-9_-]+)/?$', ['controller' => 'Product', 'action' => 'view']);
+
 Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
 
 Router::add('^123$', ['controller' => '123', 'action' => 'dex']);
