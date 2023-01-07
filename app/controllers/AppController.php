@@ -7,14 +7,18 @@ use app\models\AppModel;
 use core\App;
 use app\widgets\language\Language;
 
-class AppController extends Controller {
+class AppController extends Controller
+{
 
-	public function __construct($route) {
+	public function __construct($route)
+    {
 		parent::__construct($route);
 		new AppModel();
 
 		App::$app->setProperty('languages', Language::getLanguages());
-		dd(App::$app->getProperty('languages'), true);
+		App::$app->getProperty('language', Language::getLanguage(App::$app->getProperty('languages')));
+		//dd(App::$app->getProperty('languages'), true);
+        dd(Language::getLanguage(App::$app->getProperty('languages')));
 	}
 
 }

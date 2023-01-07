@@ -4,6 +4,7 @@ namespace core;
 
 class Router
 {
+
     protected static array $routes = [];
     protected static array $route = [];
 
@@ -36,7 +37,12 @@ class Router
     public static function dispatch($url) 
 	{
         $url = self::removeQueryString($url);
-        if(self::matchRoute($url)) {           
+        if(self::matchRoute($url)) {
+
+            if(!empty(self::$route['lang'])) {
+                App::$app->setProperty('lang', self::$route['lang']);
+            }
+
             $controller = 'app\controllers\\' . self::$route['admin_prefix'] . self::$route['controller'] . 'Controller';
             if (class_exists($controller)) {
 
@@ -57,7 +63,6 @@ class Router
             } else {
                 throw new \Exception("Controller {$controller} not found!!!", 404);
             }
-
         } else {
             throw new \Exception("Page not found!!!", 404);
         }
@@ -83,7 +88,7 @@ class Router
                 }
                 $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
-				//dd($route);
+				//dd($route, true);
                 return true;
             }
         }

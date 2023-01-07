@@ -22,6 +22,7 @@ abstract class Controller {
 	}
 
 	public function getView() {
+	    //dd(App::$app->getProperties(), true);
 		$this->view = $this->view ?: $this->route['action'];
 		(new View($this->route, $this->layout, $this->view, $this->meta))->render($this->data);
 	}

@@ -3,10 +3,10 @@
 namespace app\widgets\language;
 
 use RedBeanPHP\R;
+use core\app;
 
 class Language 
 {
-
 	protected $template;
 	protected $languages;
 	protected $language;
@@ -29,7 +29,26 @@ class Language
 
 	public static function getLanguage($languages)
 	{
-		
-	}
 
+        //dd($languages, true);
+
+		$lang = App::$app->getProperty('lang');
+
+		if($lang && array_key_exists($lang, $languages)) {
+		    $key = $lang;
+        } else if(!$lang) {
+            $key = key($languages);
+        } else {
+		    $lang = htmlspecialchars($lang);
+		    throw new \Exception("Not found language: {$lang}", 404);
+        }
+
+		$lang_info = $languages[$key];
+		$lang_info['code'] = $key;
+
+		return $lang_info;
+
+		//var_dump($key);
+
+	}
 }
