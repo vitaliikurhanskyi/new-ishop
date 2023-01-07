@@ -20,7 +20,8 @@ class View {
 		}
 	}
 
-	public function render($data) {
+	public function render($data) 
+	{
 		if(is_array($data)) {
 			extract($data);
 		}
@@ -45,7 +46,8 @@ class View {
 
 	}
 
-	public function getMeta() {
+	public function getMeta() 
+	{
 		if(!empty($this->meta['title'])) {
 			$out = '<title>' . htmlspecialchars(App::$app->getProperty('site_name') . " | " . $this->meta['title']) . '</title>' . PHP_EOL;
 		} else {
@@ -57,7 +59,8 @@ class View {
 		return $out;
 	}
 
-	public function getDbLogs() {
+	public function getDbLogs() 
+	{
 		if(DEBUG) {
 			if(R::testConnection()) {}
 
@@ -74,7 +77,8 @@ class View {
 		}
 	}
 
-	public function getPart($file, $data = null) {
+	public function getPart($file, $data = null) 
+	{
 		if(is_array($data)) {
 			extract($data);
 		}
