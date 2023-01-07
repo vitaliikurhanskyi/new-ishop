@@ -3,7 +3,8 @@
  * Front Controller
  * */
 
-echo '<p style="color:green; position:fixed; z-index:9999;">video 6 is finish <hr></p>';
+echo '<p style="color:green; position:fixed; z-index:9999;">video 7 || 9:30 <hr></p>';
+exit;
 
 if(PHP_MAJOR_VERSION < 8) {
     die("You need version PHP more or equal 8.0");
