@@ -1,18 +1,18 @@
 <?php
 
-function debug($data, $die = false) 
+function debug($data, $exit = false) 
 {
     echo '<pre>' . print_r($data, 1) . '</pre>';
-    if($die) {
-        die;
+    if($exit) {
+        exit;
     }
 }
 
-function dd($data, $die = false) 
+function dd($data, $exit = false) 
 {
     echo '<pre>' . print_r($data, 1) . '</pre>';
-    if($die) {
-        die;
+    if($exit) {
+        exit;
     }
 }
 
@@ -31,6 +31,6 @@ function redirect($http = false)
 
 	header("Location: {$redirect}");
 
-	die;
+	exit;
 }
 

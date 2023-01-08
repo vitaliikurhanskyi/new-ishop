@@ -36,6 +36,9 @@ class Language
 
 		$lang = App::$app->getProperty('lang');
 
+		// var_dump($lang);
+		// exit;
+
 		if($lang && array_key_exists($lang, $languages)) {
 		    $key = $lang;
         } else if(!$lang) {
