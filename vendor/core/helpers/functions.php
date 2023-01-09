@@ -1,5 +1,7 @@
 <?php
 
+use core\App;
+
 function debug($data, $exit = false) 
 {
     echo '<pre>' . print_r($data, 1) . '</pre>';
@@ -33,4 +35,46 @@ function redirect($http = false)
 
 	exit;
 }
+
+function base_url()
+{
+    return PATH . '/' . (\core\App::$app->getProperty('lang') ? \core\App::$app->getProperty('lang') . '/' : '');
+}
+
+/**
+ * @param string $key Key of GET array
+ * @param string $type Values 'int', 'float', 'str'
+ * @return float|int|string
+ */
+function get($key, $type = 'int')
+{
+    $param = $key;
+    $$param = $_GET[$param] ?? '';
+    if($type == 'int') {
+        return (int)$$param;
+    } else if ($type == 'float') {
+        return (float)$$param;
+    } else {
+        return trim($$param);
+    }
+}
+
+/**
+ * @param $key Key of POST array
+ * @param string $type Values 'int', 'float', 'str'
+ * @return float|int|string
+ */
+function post($key, $type = 'str')
+{
+    $param = $key;
+    $$param = $_POST[$param] ?? '';
+    if($type == 'int') {
+        return (int)$$param;
+    } else if ($type == 'float') {
+        return (float)$$param;
+    } else {
+        return trim($$param);
+    }
+}
+
 

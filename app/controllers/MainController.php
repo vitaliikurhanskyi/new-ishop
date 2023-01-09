@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Main;
+use core\App;
 use \RedBeanPHP\R;
 
 /** @property Main $model */
@@ -20,8 +21,10 @@ class MainController extends AppController {
 
 		//Slides in main page
 		$slides = R::findAll('slider');
+
+		//dd(App::$app->getProperty('language')['id'], 1);
 		
-		$products = $this->model->getHits(1, 6);
+		$products = $this->model->getHits(App::$app->getProperty('language')['id'], 6);
 
 		//dd($products, 1);
 
