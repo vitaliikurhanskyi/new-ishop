@@ -7,6 +7,7 @@ use app\models\AppModel;
 use core\App;
 use app\widgets\language\Language;
 
+
 class AppController extends Controller
 {
 
@@ -21,6 +22,13 @@ class AppController extends Controller
 		//dd(App::$app->getProperty('language'), 1);
 
         //dd(App::$app->getProperties(), true);
+
+        //dd(App::$app->getProperties(), 1);
+
+        $lang = App::$app->getProperty('language');
+        \core\Language::load($lang['code'], $this->route);
+
+        dd(\core\Language::$lang_data);
 	}
 
 }
