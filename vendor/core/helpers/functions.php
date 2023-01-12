@@ -77,4 +77,14 @@ function post($key, $type = 'str')
     }
 }
 
+function __($key)
+{
+    echo \core\Language::get($key);
+}
+
+function ___($key)
+{
+    return \core\Language::get($key);
+}
+
 

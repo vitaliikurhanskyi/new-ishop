@@ -8,7 +8,7 @@ class Language
 {
     // Array with all translated frases
     public static array $lang_data = [];
-    // Array with all translated frases for template
+    // Array with all translated frases for view template
     public static array $lang_layout = [];
     // Array with all translated frases for view
     public static array $lang_view = [];
