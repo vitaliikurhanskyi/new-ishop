@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Main;
 use core\App;
+use core\Cache;
 use \RedBeanPHP\R;
 
 /** @property Main $model */
@@ -22,6 +23,13 @@ class MainController extends AppController {
         //var_dump(Language::get('tpl_search'));
 
         //__('tpl_search');
+
+        // Test Cache
+//        $test = 'Hello';
+//        $cache = Cache::getInstance();
+//        $cache->set('test', $test, 10);
+//        $a = $cache->get('test');
+//        var_dump($a);
 
 		//Slides in main page
 		$slides = R::findAll('slider');
