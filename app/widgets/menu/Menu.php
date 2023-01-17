@@ -18,7 +18,7 @@ class Menu
     protected $menuHtml;
     protected $tpl;
     protected $container = 'ul';
-    protected $class = 'menu';
+    public $class = 'menu';
     protected $cache = 3600;
     protected $cacheKey = 'ishop_menu';
     protected $attrs = [];

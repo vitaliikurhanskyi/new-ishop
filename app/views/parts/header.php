@@ -59,7 +59,7 @@
 
               <!-- <div class="dropdown d-inline-block">
                 <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-                  <img src="<?= PATH ?>/assets/img/ru.png" alt="">
+                  <img src="/assets/img/ru.png" alt="">
                 </a>
                 <ul class="dropdown-menu" id="languages">
                   <li>
@@ -89,10 +89,13 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-<!--                  --><?php //new \app\widgets\menu\Menu([
-//                          'class' => 'navbar-nav ms-auto mb-2 mb-lg-0',
-//                          'cache' => 0,
-//                  ])  ?>
+                  <?php
+                    $menu_options = [
+                        'class' => 'navbar-nav ms-auto mb-2 mb-lg-0',
+                        'cache' => 0,
+                    ];
+                    new \app\widgets\menu\Menu($menu_options);
+                  ?>
 
 <!--                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">-->
 <!--                  <li class="nav-item">-->
