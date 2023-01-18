@@ -109,7 +109,11 @@
 
     <script>
         const PATH = '<?= PATH ?>';
+        //const JS_TRANSLATES = <?//= JS_TRANSLATES ?>//;
+        //console.log(JS_TRANSLATES.tpl_search);
     </script>
+
+    <?php new app\widgets\jstranslates\Jstranslates(); ?>
 
     <script src="<?= PATH ?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
