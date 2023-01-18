@@ -93,6 +93,7 @@
                     $menu_options = [
                         'class' => 'navbar-nav ms-auto mb-2 mb-lg-0',
                         'cache' => 0,
+                        'attrs' => ['id' => 'test'],
                     ];
                     new \app\widgets\menu\Menu($menu_options);
                   ?>
