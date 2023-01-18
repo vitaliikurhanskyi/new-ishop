@@ -38,10 +38,31 @@ $(document).ready(function () {
 		}
 	});
 
+	// language
 	$('#languages button').on('click', function (e) {
 		const lang_code = $(this).data('langcode');
 		window.location = PATH + '/language/change?lang=' + lang_code;
 	});
 
+	// cart
+	$('.add-to-cart').on('click', function (event) {
+		event.preventDefault();
+		const id = $(this).data('id');
+		const quantity = $('#input-quantity').val() ? $('#input-quantity').val() : 1;
+		const $this = $(this);
+
+		$.ajax({
+			url: 'cart/add',
+			type: 'GET',
+			data: {id: id, quantity: quantity},
+			success: function(response) {
+				console.log(response);
+			},
+			error: function () {
+				alert('Error');
+			}
+		});
+
+	});
 
 });
