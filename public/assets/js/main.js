@@ -65,4 +65,6 @@ $(document).ready(function () {
 
 	});
 
+	console.log(JSTRANSLATE.js_error);
+
 });

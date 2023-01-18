@@ -14,10 +14,6 @@ define("PATH", 'http://new-ishop.loc');
 define("ADMIN", 'http://new-ishop.loc/admin');
 define("NO_IMAGE", 'uploads/no_image.jpg');
 
-
-
 require_once ROOT . '/vendor/autoload.php';
 
-//$languagetest = require_once APP . '/languages/en.php';
-//
-//define('JS_TRANSLATES', json_encode($languagetest));
+
