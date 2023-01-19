@@ -10,7 +10,7 @@ use core\App;
 class CartController extends AppController
 {
 
-    public function addAction()
+    public function addAction(): bool
     {
         $lang = App::$app->getProperty('language');
         $id = get('id');
@@ -22,7 +22,18 @@ class CartController extends AppController
 
         $product = $this->model->get_product($id, $lang);
 
-        dd($product, 1);
+        if(!$product) {
+            return false;
+        }
+
+        $this->model->add_to_cart($product, $quantity);
+
+        if($this->isAjax()) {
+            dd($_SESSION['cart'], 1);
+        }
+
+        redirect();
+        return true;
 
     }
 
