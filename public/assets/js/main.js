@@ -59,12 +59,9 @@ $(document).ready(function () {
 				console.log(response);
 			},
 			error: function () {
-				alert('Error');
+				alert(JSTRANSLATE.js_error);
 			}
 		});
 
 	});
-
-	console.log(JSTRANSLATE.js_error);
-
 });

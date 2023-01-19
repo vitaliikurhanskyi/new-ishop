@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'js_error' => "Error test",
+    'js_error' => "Error Add To Card",
 ];
