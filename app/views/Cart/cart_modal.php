@@ -14,16 +14,16 @@
             </thead>
 
             <tbody>
-
+            <?php foreach ($_SESSION['cart'] as $is => $item) : ?>
                 <tr>
                     <td>
-                        <a href="#"><img src="<?= PATH ?>/assets/img/products/apple_cinema_30.jpg" alt=""></a>
+                        <a href="product/<?php $item['slug'] ?>"><img src="<?= PATH . $item['img'] ?>" alt=""></a>
                     </td>
-                    <td><a href="#">Apple cinema</a></td>
-                    <td>1</td>
-                    <td>100</td>
+                    <td><a href="product/<?php $item['slug'] ?>"><?= $item['title'] ?></a></td>
+                    <td><?= $item['quantity'] ?></td>
+                    <td><?= $item['price'] ?>$</td>
                 </tr>
-
+            <?php endforeach; ?>
             </tbody>
 
         </table>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-danger ripple" data-bs-dismiss="modal">Продолжить покупки</button>
+    <button type="button" class="btn btn-success ripple" data-bs-dismiss="modal">Продолжить покупки</button>
     <?php if (!empty($_SESSION['cart'])) : ?>
         <button type="button" class="btn btn-primary">Оформить заказ</button>
         <button type="button" class="btn btn-danger">Очистить корзину</button>

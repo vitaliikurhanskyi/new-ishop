@@ -22,7 +22,7 @@ class Cart extends AppModel
             return false;
         }
 
-        if(isset($_SESSION['cart'][$product['id']])) {
+        if (isset($_SESSION['cart'][$product['id']])) {
             $_SESSION['cart'][$product['id']]['quantity'] += $quantity;
         } else {
             if($product['is_download']) {
