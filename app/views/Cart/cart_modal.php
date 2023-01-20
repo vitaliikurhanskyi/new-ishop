@@ -23,7 +23,7 @@
                     <td><a href="product/<?= $item['slug'] ?>"><?= $item['title'] ?></a></td>
                     <td><?= $item['quantity'] ?></td>
                     <td><?= $item['price'] ?>$</td>
-                    <td><a href="cart/delete?id=<?= $id; ?>" class="del-item"><i class="far fa-trash-alt"></i></a></td>
+                    <td><a href="cart/delete?id=<?= $id; ?>" data-id="<?= $id; ?>" class="del-item"><i class="far fa-trash-alt"></i></a></td>
                 </tr>
             <?php endforeach; ?>
             <tr>
@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td colspan="4" class="text-end"><?php __('tpl_cart_sum') ?></td>
-                <td class="cart-qty"><?= $_SESSION['cart.sum'] ?>$</td>
+                <td class="cart-sum"><?= $_SESSION['cart.sum'] ?>$</td>
             </tr>
             </tbody>
 
@@ -40,7 +40,7 @@
 
     </div>
     <?php else : ?>
-    <h4 class="text-start">Empty Cart</h4>
+    <h4 class="text-start"><?php __('tpl_cart_empty'); ?></h4>
     <?php endif; ?>
 </div>
 
@@ -48,6 +48,6 @@
     <button type="button" class="btn btn-success ripple" data-bs-dismiss="modal"><?php __('tpl_cart_btn_continue'); ?></button>
     <?php if (!empty($_SESSION['cart'])) : ?>
         <button type="button" class="btn btn-primary"><?php __('tpl_cart_btn_order'); ?></button>
-        <button type="button" class="btn btn-danger"><?php __('tpl_cart_btn_clear'); ?></button>
+        <button id="clear-cart" type="button" class="btn btn-danger"><?php __('tpl_cart_btn_clear'); ?></button>
     <?php endif; ?>
 </div>
