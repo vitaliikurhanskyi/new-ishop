@@ -23,7 +23,7 @@ $(function() {
 				showCart(res)
 			},
 			error: function () {
-				alert('Error!');
+				alert(JSTRANSLATE.js_error);
 			}
 		});
 	});

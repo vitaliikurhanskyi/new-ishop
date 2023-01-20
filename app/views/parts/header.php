@@ -41,7 +41,7 @@
 
               <a href="#" class="relative" data-bs-toggle="modal" data-bs-target="#cart-modal">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="badge bg-danger rounded-pill count-items">0</span>
+                <span class="badge bg-danger rounded-pill count-items"><?= $_SESSION['cart.quantity'] ?? 0; ?></span>
               </a>
               
 
