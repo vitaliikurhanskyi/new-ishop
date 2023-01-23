@@ -16,8 +16,13 @@
 		  <div class="product-bottom-details d-flex justify-content-between">
 			<div class="product-price"><small><?php if($product['old_price']) echo $product['old_price'] . '$'; ?></small><?= $product['price']; ?>$</div>
 			<div class="product-links">
-			  <a class="add-to-cart" href="cart/add?id=<?= $product['id']; ?>" data-id="<?= $product['id']; ?>"><i class="fas fa-shopping-cart"></i></a>
-			  <a href="#"><i class="far fa-heart"></i></a>
+			  <a class="add-to-cart" href="cart/add?id=<?= $product['id']; ?>" data-id="<?= $product['id']; ?>">
+<!--                  <i class="fas fa-shopping-cart"></i>-->
+                  <?= get_cart_icon($product['id']); ?>
+              </a>
+			  <a href="#">
+                  <i class="far fa-heart"></i>
+              </a>
 			</div>
 		  </div>
 		</div>
