@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'test_test' => 'тест перевода для Product/view контроллера',
+    'product_view_buy' => 'Купить',
 ];
