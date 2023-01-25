@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 
+use app\models\Breadcrumbs;
 use core\App;
 
 /** @property Product $model $model */
@@ -17,6 +18,8 @@ class ProductController extends AppController {
         if(empty($product)) {
             throw new \Exception("Product {$slug} not found", 404);
         }
+
+        $breadcrumbs = Breadcrumbs::getBreadcrumbs($product['category_id'], $product['title']);
 
         $gallery = $this->model->get_gallery($product['id']);
 

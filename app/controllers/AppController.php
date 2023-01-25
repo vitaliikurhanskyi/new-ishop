@@ -6,6 +6,7 @@ use core\Controller;
 use app\models\AppModel;
 use core\App;
 use app\widgets\language\Language;
+use RedBeanPHP\R;
 
 
 class AppController extends Controller
@@ -27,8 +28,18 @@ class AppController extends Controller
 
         $lang = App::$app->getProperty('language');
         \core\Language::load($lang['code'], $this->route);
-
         //dd(\core\Language::$lang_data);
+
+        //category for bradcrambs
+
+        $categories = R::getAssoc("SELECT c.*, cd.* FROM category c 
+                        JOIN category_description cd
+                        ON c.id = cd.category_id
+                        WHERE cd.language_id = ?", [$lang['id']]);
+
+        App::$app->setProperty("categories_{$lang['code']}", $categories);
+
+        //dd(App::$app->getProperties(), 1);
 	}
 
 }
