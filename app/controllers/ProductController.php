@@ -17,6 +17,8 @@ class ProductController extends AppController {
 		//dd($product, 1);
         if(empty($product)) {
             throw new \Exception("Product {$slug} not found", 404);
+//            $this->error_404();
+//            return;
         }
 
         $breadcrumbs = Breadcrumbs::getBreadcrumbs($product['category_id'], $product['title']);

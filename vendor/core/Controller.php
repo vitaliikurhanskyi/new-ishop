@@ -11,7 +11,7 @@ abstract class Controller {
 	public object|string $model;
 
 	public function __construct(public $route = []) {
-		//debug($this->route);
+		//debug($this->route, 1);
 	}
 
 	public function getModel() {
@@ -50,6 +50,14 @@ abstract class Controller {
         $prefix = str_replace('\\', '/', $this->route['admin_prefix']);
         require APP . "/views/{$prefix}{$this->route['controller']}/{$view}.php";
         exit;
+    }
+
+    public function error_404($folder = 'Error', $view = 404, $response = 404)
+    {
+        http_response_code($response);
+        $this->setMeta(___('tpl_error_404'));
+        $this->route['controller'] = $folder;
+        $this->view = $view;
     }
 
 }
