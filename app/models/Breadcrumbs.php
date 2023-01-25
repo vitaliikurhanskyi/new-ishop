@@ -27,16 +27,16 @@ class Breadcrumbs extends AppModel
         return $breadcrumbs;
     }
 
-    public static function getParts($cats, $id): array|false
+    public static function getParts($categories, $category_id): array|false
     {
-        if (!$id) {
+        if (!$category_id) {
             return false;
         }
         $breadcrumbs = [];
-        foreach ($cats as $k => $v) {
-            if (isset($cats[$id])) {
-                $breadcrumbs[$cats[$id]['slug']] = $cats[$id]['title'];
-                $id = $cats[$id]['parent_id'];
+        foreach ($categories as $k => $v) {
+            if (isset($categories[$category_id])) {
+                $breadcrumbs[$categories[$category_id]['slug']] = $categories[$category_id]['title'];
+                $category_id = $categories[$category_id]['parent_id'];
             } else {
                 break;
             }
