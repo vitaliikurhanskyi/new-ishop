@@ -6,6 +6,9 @@ namespace app\controllers;
 use app\models\Breadcrumbs;
 use app\models\Category;
 use core\App;
+use core\Pagination;
+
+
 /** @property Category $model */
 
 class CategoryController extends AppController
@@ -37,9 +40,20 @@ class CategoryController extends AppController
         // http://new-ishop.loc/en/category/noutbuki
         //dd($ids, 1);
 
-        $products = $this->model->get_categories_products($ids, $lang['id']);
+        //$page = abs(get('page')) ? get('page') : 1;
+
+        $page = abs(get('page')) ?: 1;
+        $perpage = App::$app->getProperty('pagination');
+        $total = $this->model->get_count_products($ids);
+
+        //var_dump($page, $perpage, $total);
+
+        $pagination = new Pagination($page, $perpage, $total);
+        $start = $pagination->getStart();
+
+        $products = $this->model->get_categories_products($ids, $lang['id'], $start, $perpage);
         //dd($products, 1);
         $this->setMeta($category['title'], $category['description'], $category['keywords']);
-        $this->set(compact('products', 'breadcrumbs', 'category'));
+        $this->set(compact('products', 'breadcrumbs', 'category', 'total', 'pagination'));
     }
 }
