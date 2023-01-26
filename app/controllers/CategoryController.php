@@ -13,6 +13,7 @@ class CategoryController extends AppController
     public function viewAction()
     {
         $lang = App::$app->getProperty('language');
+
         $category = $this->model->get_category($this->route['slug'], $lang);
 
         //dd($category, 1);
@@ -30,8 +31,15 @@ class CategoryController extends AppController
 
         $ids = $this->model->get_ids($category['id']);
 
-        // http://new-ishop.loc/en/category/noutbuki
-        var_dump($ids);
+        // add current category
+        $ids = !$ids ? $category['id'] : $ids . $category['id'];
 
+        // http://new-ishop.loc/en/category/noutbuki
+        //dd($ids, 1);
+
+        $products = $this->model->get_categories_products($ids, $lang['id']);
+        //dd($products, 1);
+        $this->setMeta($category['title'], $category['description'], $category['keywords']);
+        $this->set(compact('products', 'breadcrumbs', 'category'));
     }
 }
