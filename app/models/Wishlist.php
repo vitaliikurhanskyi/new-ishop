@@ -19,7 +19,14 @@ class Wishlist extends AppModel
         if(!$wishlist) {
             setcookie('wishlist', $id, time() + 3600 * 24 * 7 * 30, '/');
         } else {
-            
+            if(!in_array($id, $wishlist)) {
+                if(count($wishlist) >= WISHLIST_LIMIT) {
+                    array_shift($wishlist);
+                }
+                $wishlist[] = $id;
+                $wishlist = implode(',', $wishlist);
+                setcookie('wishlist', $wishlist, time() + 3600 * 24 * 7 * 30, '/');
+            }
         }
     }
 

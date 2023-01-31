@@ -8,6 +8,14 @@ use app\models\Wishlist;
 /** @property Wishlist $model */
 class WishlistController extends AppController
 {
+
+//    public function addAction()
+//    {
+//        $id = get('id');
+//        $test = ['test' => 'test 1234', 'id' => $id];
+//        exit(json_encode($test));
+//    }
+
     public function addAction()
     {
         $id = get('id');
@@ -21,6 +29,7 @@ class WishlistController extends AppController
 
         $product = $this->model->get_product($id);
         if($product) {
+            $this->model->add_to_wishlist($id);
             $answer = [
                 'result' => 'success',
                 'text' => ___('tpl_wishlist_add_success'),

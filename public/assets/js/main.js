@@ -96,8 +96,8 @@ $(function() {
 
 	// WISHLIST
 
-	$('.product-card').on('click', '.add-to-wishlist', function(event){
-		event.preventDefault();
+	$('.product-card').on('click', '.add-to-wishlist', function(e){
+		e.preventDefault();
 		const id = $(this).data('wishlist');
 		const $this = $(this);
 		$.ajax({
@@ -109,6 +109,7 @@ $(function() {
 				console.log(res);
 			},
 			error: function(){
+				console.log("error wishlist");
 				alert(JSTRANSLATE.js_error_wishlist);
 			}
 		});
