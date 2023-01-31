@@ -13,9 +13,12 @@ Router::add('^(?P<lang>[a-z]+)?/?category/(?P<slug>[a-z0-9_-]+)/?$', ['controlle
 
 Router::add('^(?P<lang>[a-z]+)?/?search/?$', ['controller' => 'Search', 'action' => 'index']);
 
-Router::add('^(?P<lang>[a-z]+)?/?$', ['controller' => 'Main', 'action' => 'index']);
-
 Router::add('^(?P<lang>[a-z]+)?/?wishlist/?$', ['controller' => 'Wishlist', 'action' => 'index']);
+
+
+
+/////////////////////////////
+Router::add('^(?P<lang>[a-z]+)?/?$', ['controller' => 'Main', 'action' => 'index']);
 
 Router::add('^123$', ['controller' => '123', 'action' => 'dex']);
 
