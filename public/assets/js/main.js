@@ -111,8 +111,42 @@ $(function() {
 					'',
 					res.result
 				);
-				$this.removeClass('add-to-wishlist').addClass('delete-from-wishlist');
-				$this.find('i').removeClass('far fa-heart').addClass('fas fa-hand-holding-heart');
+				if(res.result == 'success') {
+					$this.removeClass('add-to-wishlist').addClass('delete-from-wishlist');
+					$this.find('i').removeClass('far fa-heart').addClass('fas fa-hand-holding-heart');
+				}
+			},
+			error: function(){
+				console.log("error wishlist");
+				alert(JSTRANSLATE.js_error_wishlist);
+			}
+		});
+	});
+
+	$('.product-card').on('click', '.delete-from-wishlist', function(e){
+		e.preventDefault();
+		const id = $(this).data('wishlist');
+		const $this = $(this);
+		$.ajax({
+			url: 'wishlist/delete',
+			type: 'GET',
+			data: {id: id},
+			success: function(res){
+				const url = window.location.toString();
+				if(url.indexOf('wishlist') !== -1) {
+					window.location = url;
+				} else {
+					res = JSON.parse(res);
+					Swal.fire(
+						res.text,
+						'',
+						res.result
+					);
+					if(res.result == 'success') {
+						$this.removeClass('delete-from-wishlist').addClass('add-to-wishlist');
+						$this.find('i').removeClass('fas fa-hand-holding-heart').addClass('far fa-heart');
+					}
+				}
 			},
 			error: function(){
 				console.log("error wishlist");
