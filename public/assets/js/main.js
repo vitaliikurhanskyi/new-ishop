@@ -92,6 +92,30 @@ $(function() {
 		window.location = PATH + window.location.pathname + '?' + $(this).val();
 	});
 
+	// SORT
+
+	// WISHLIST
+
+	$('.product-card').on('click', '.add-to-wishlist', function(event){
+		event.preventDefault();
+		const id = $(this).data('wishlist');
+		const $this = $(this);
+		$.ajax({
+			url: 'wishlist/add',
+			type: 'GET',
+			data: {id: id},
+			success: function(res){
+				res = JSON.parse(res);
+				console.log(res);
+			},
+			error: function(){
+				alert(JSTRANSLATE.js_error_wishlist);
+			}
+		});
+	});
+
+	// WISHLIST
+
 
 	$('.open-search').click(function(e) {
 		e.preventDefault();

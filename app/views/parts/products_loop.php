@@ -20,7 +20,7 @@
 <!--                  <i class="fas fa-shopping-cart"></i>-->
                   <?= get_cart_icon($product['id']); ?>
               </a>
-			  <a href="#">
+			  <a href="wishlist/add?id=<?= $product['id']; ?>" data-wishlist="<?= $product['id']; ?>" class="add-to-wishlist">
                   <i class="far fa-heart"></i>
               </a>
 			</div>
