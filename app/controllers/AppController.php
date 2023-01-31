@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Wishlist;
 use core\Controller;
 use app\models\AppModel;
 use core\App;
@@ -40,6 +41,11 @@ class AppController extends Controller
         App::$app->setProperty("categories_{$lang['code']}", $categories);
 
         //dd(App::$app->getProperties(), 1);
+
+        // wishlist
+
+        App::$app->setProperty('wishlist', Wishlist::get_wishlist_ids());
+        //debug(App::$app->getProperty('wishlist'), 1);
 	}
 
 }
