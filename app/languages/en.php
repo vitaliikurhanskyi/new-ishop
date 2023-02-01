@@ -23,8 +23,8 @@ return [
     'tpl_cart_btn_clear' => 'Clear basket',
     'tpl_cart_empty' => 'Empty basket',
 
-    'tpl_login' => 'Authorization',
-    'tpl_signup' => 'Registration',
+    'tpl_login' => 'Login',
+    'tpl_signup' => 'Signup',
     'tpl_logout' => 'Logout',
     'tpl_cabinet' => 'Cabinet',
 
@@ -41,6 +41,7 @@ return [
 
     'tpl_search_title' => 'Search',
     'tpl_search_query' => 'Search by: ',
+    'tpl_search_not_found' => 'No results were found for your search',
 
     'tpl_wishlist_add_success' => 'Product added to favorites',
     'tpl_wishlist_add_error' => 'Error adding product to favorites',
