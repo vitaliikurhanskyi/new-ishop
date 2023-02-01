@@ -15,7 +15,7 @@ Router::add('^(?P<lang>[a-z]+)?/?search/?$', ['controller' => 'Search', 'action'
 
 Router::add('^(?P<lang>[a-z]+)?/?wishlist/?$', ['controller' => 'Wishlist', 'action' => 'index']);
 
-
+Router::add('^(?P<lang>[a-z]+)?/?page/(?P<slug>[a-z0-9_-]+)/?$', ['controller' => 'Page', 'action' => 'view']);
 
 /////////////////////////////
 Router::add('^(?P<lang>[a-z]+)?/?$', ['controller' => 'Main', 'action' => 'index']);
