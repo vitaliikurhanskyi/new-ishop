@@ -20,13 +20,16 @@ class UserController extends AppController
             $this->model->load($data);
 //            dd($data);
 //            dd($this->model->attributes, 1);
-            if(!$this->model->validate($data)) {
+            if(!$this->model->validate($data) || !$this->model->checkUnique()) {
                 $this->model->getErrors();
                 $_SESSION['form_data'] = $data;
             } else {
-                $this->model->attributes['password'] = password_hash($this->model-attributes['password'], PASSWORD_DEFAULT);
+                $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
                 if($this->model->save('user')) {
                     $_SESSION['success'] = ___('user_signup_success_register');
+                    //redirect(base_url());
+                } else {
+                    $_SESSION['errors'] = ___('user_signup_error_register');
                 }
 
             }
