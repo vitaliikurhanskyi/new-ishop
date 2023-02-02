@@ -3,7 +3,7 @@
  * Front Controller
  * */
 
-echo '<p style="color:green; position:fixed; z-index:9999;">video 34 is finish<hr></p>';
+echo '<p style="color:green; position:fixed; z-index:9999;">video 35 || 7:00<hr></p>';
 exit;
 
 if(PHP_MAJOR_VERSION < 8) {

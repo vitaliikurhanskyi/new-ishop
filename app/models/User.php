@@ -46,4 +46,17 @@ class User extends AppModel
         return true;
     }
 
+    public function login($is_admin = false)
+    {
+        $email = post('email');
+        $password = post('password');
+        if ($email && $password) {
+            if ($is_admin) {
+
+            } else {
+
+            }
+        }
+    }
+
 }

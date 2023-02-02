@@ -37,7 +37,19 @@ class UserController extends AppController
         }
 
         $this->setMeta(___('tpl_signup'));
+    }
 
+    public function loginAction()
+    {
+        if(User::checkAuth()) {
+            redirect(base_url());
+        }
+
+        if(!empty($_POST)) {
+
+        }
+
+        $this->setMeta(___('tpl_login'));
     }
 
 }
