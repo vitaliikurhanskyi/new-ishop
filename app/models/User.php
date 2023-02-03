@@ -4,7 +4,9 @@
 namespace app\models;
 
 
+use core\App;
 use RedBeanPHP\R;
+use Valitron\Validator;
 
 class User extends AppModel
 {
@@ -70,5 +72,53 @@ class User extends AppModel
         }
         return false;
     }
+
+    // methods from Model (test)
+
+    public function load($data)
+    {
+        foreach ($this->attributes as $name => $value) {
+            if(isset($data[$name])) {
+                $this->attributes[$name] = $data[$name];
+            }
+        }
+    }
+
+    public function validate($data): bool
+    {
+        Validator::langDir(APP . '/languages/validator/lang');
+        Validator::lang(App::$app->getProperty('language')['code']);
+        $validator = new Validator($data);
+        $validator->rules($this->rules);
+        $validator->labels($this->getLabels());
+        if ($validator->validate()) {
+            return true;
+        } else {
+            $this->errors = $validator->errors();
+            return false;
+        }
+    }
+
+    public function getLabels(): array
+    {
+        $labels = [];
+        foreach ($this->labels as $k => $v) {
+            $labels[$k] = ___($v);
+        }
+        return $labels;
+    }
+
+    public function save($table): int|string
+    {
+        $tbl = R::dispense($table);
+        foreach ($this->attributes as $name => $value) {
+            if($value != '') {
+                $tbl->$name = $value;
+            }
+        }
+        return R::store($tbl);
+    }
+
+
 
 }
