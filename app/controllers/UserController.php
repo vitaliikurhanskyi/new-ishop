@@ -18,7 +18,6 @@ class UserController extends AppController
         if(!empty($_POST)) {
             $data = $_POST;
             $this->model->load($data);
-//            dd($data);
 //            dd($this->model->attributes, 1);
             if(!$this->model->validate($data) || !$this->model->checkUnique()) {
                 $this->model->getErrors();

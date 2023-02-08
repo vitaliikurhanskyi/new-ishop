@@ -6,6 +6,7 @@ namespace app\models;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use RedBeanPHP\R;
+use core\App;
 
 class Order extends AppModel
 {
@@ -15,7 +16,6 @@ class Order extends AppModel
         R::begin();
         try {
 //            dd($data);
-            //dd($_SESSION, 1);
             $order = R::dispense('orders');
             $order->user_id = $data['user_id'];
             $order->note = $data['note'];
@@ -27,7 +27,7 @@ class Order extends AppModel
             R::commit();
             return $order_id;
         } catch (\Exception $e) {
-//            dd($e->getMessage());
+           dd($e->getMessage(), 1);
 //            exit();
             R::rollback();
             return false;
@@ -57,7 +57,7 @@ class Order extends AppModel
             $binds = array_merge($binds, [$order_id, $product_id, $product['title'], $product['slug'], $product['quantity'], $product['price'], $sum]);
         }
         $sql_part = rtrim($sql_part, ',');
-        R::exec("INSERT INTO order_product (order_id, product_id, title, slug, quantity, price, sum) VALUES $sql_part", $binds);
+        R::exec("INSERT INTO order_product (order_id, product_id, title, slug, qty, price, sum) VALUES $sql_part", $binds);
     }
 
     public static function mailOrder($order_id, $user_email, $tpl): bool
