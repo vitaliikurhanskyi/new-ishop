@@ -101,12 +101,16 @@ class CartController extends AppController
             $data['user_id'] = $user_id ?? $_SESSION['user']['id'];
             $data['note'] = post('note');
             $user_email = $_SESSION['user']['email'] ?? post('email');
+            //dd($data, 1);
 
             if(!$order_id = Order::saveOrder($data)) {
                 $_SESSION['errors'] = ___('cart_checkout_error_save_order');
             } else {
                 Order::mailOrder($order_id, $user_email, 'mail_order_user');
-                Order::mailOrder($order_id, App::$app->getProperty('admin_email'), 'mail_order_user');
+                Order::mailOrder($order_id, App::$app->getProperty('admin_email'), 'mail_order_admin');
+                unset($_SESSION['cart']);
+                unset($_SESSION['cart.sum']);
+                unset($_SESSION['cart.quantity']);
                 $_SESSION['success'] = ___('cart_checkout_order_success');
             }
         }
