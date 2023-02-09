@@ -14,7 +14,6 @@ class Breadcrumbs extends AppModel
         $lang = App::$app->getProperty('language')['code'];
         $categories = App::$app->getProperty("categories_{$lang}");
         $breadcrumbs_array = self::getParts($categories, $category_id);
-        //dd($breadcrumbs_array, 1);
         $breadcrumbs = "<li class='breadcrumb-item'><a href='" . base_url() . "'>" . ___('tpl_home_breadcrumbs') . "</a></li>";
         if ($breadcrumbs_array) {
             foreach ($breadcrumbs_array as $slug => $title) {

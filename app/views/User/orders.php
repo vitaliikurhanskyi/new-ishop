@@ -1,3 +1,8 @@
+<?php
+/** @var $this \core\View */
+/** @var $pagination object */
+?>
+
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-light p-2">

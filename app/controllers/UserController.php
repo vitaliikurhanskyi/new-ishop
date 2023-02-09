@@ -82,8 +82,8 @@ class UserController extends AppController
         }
 
         $page = get('page');
-        //$perpage = App::$app->getProperty('pagination');
-        $perpage = 1;
+        $perpage = App::$app->getProperty('pagination');
+        //$perpage = 1;
         $total = $this->model->get_count_orders($_SESSION['user']['id']);
         $pagination = new Pagination($page, $perpage, $total);
         $start = $pagination->getStart();
@@ -93,5 +93,24 @@ class UserController extends AppController
         $this->setMeta(___('user_orders_title'));
         $this->set(compact('orders', 'pagination', 'total'));
     }
+
+    public function orderAction()
+    {
+        if (!User::checkAuth()) {
+            redirect(base_url() . 'user/login');
+        }
+
+        $id = get('id');
+        $order = $this->model->get_user_order($id);
+        if (!$order) {
+            throw new \Exception('Not found order');
+        }
+
+        $this->setMeta(___('user_order_title'));
+        $this->set(compact('order'));
+
+    }
+
+
 
 }
