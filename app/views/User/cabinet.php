@@ -14,7 +14,10 @@
     <div class="row">
 
         <div class="col-12">
-            <h1 class="section-title"><?php __('tpl_cabinet'); ?></h1>
+            <h1 class="section-title">
+                <?php __('tpl_cabinet'); ?>
+                <?php echo $_SESSION['user']['name']; ?>
+            </h1>
         </div>
 
         <?php $this->getPart('parts/cabinet_sidebar'); ?>

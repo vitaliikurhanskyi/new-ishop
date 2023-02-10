@@ -46,6 +46,8 @@ class AppController extends Controller
 
         App::$app->setProperty('wishlist', Wishlist::get_wishlist_ids());
         //debug(App::$app->getProperty('wishlist'), 1);
+        App::$app->setProperty('current_action_page', $this->route['controller']);
+        //dd(App::$app->getProperties(), 1);
 	}
 
 }
