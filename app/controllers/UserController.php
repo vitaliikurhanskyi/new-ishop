@@ -129,6 +129,17 @@ class UserController extends AppController
         $this->set(compact('files', 'pagination', 'total'));
     }
 
+    public function downloadAction()
+    {
+        if (!User::checkAuth()) {
+            redirect(base_url() . 'user/login');
+        }
+
+        $id = get('id');
+        $lang = App::$app->getProperty('language');
+
+    }
+
 
 
 }
