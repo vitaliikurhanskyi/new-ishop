@@ -119,6 +119,17 @@ class User extends AppModel
         return R::store($tbl);
     }
 
+    public function update($table, $id): int|string
+    {
+        $tbl = R::load($table, $id);
+        foreach ($this->attributes as $name => $value) {
+            if($value != '') {
+                $tbl->$name = $value;
+            }
+        }
+        return R::store($tbl);
+    }
+
     public function get_count_orders($user_id): int
     {
         return R::count('orders', 'user_id = ?', [$user_id]);
