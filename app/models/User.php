@@ -146,7 +146,7 @@ class User extends AppModel
 
     public function get_user_file($id, $lang): array
     {
-        return R::getRow("SELECT od.*, d.*, dd.* FROM order_download od JOIN download d ON d.id = od.download_id JOIN download_description dd ON d.id = dd.download_id WHERE od.user_id = ? AND dd.language_id = ?", [$_SESSION['user']['id'], $lang['id']]);
+        return R::getRow("SELECT od.*, d.*, dd.* FROM order_download od JOIN download d ON d.id = od.download_id JOIN download_description dd ON d.id = dd.download_id WHERE od.user_id = ? AND od.status = 1 AND od.download_id = ?  AND dd.language_id = ?", [$_SESSION['user']['id'], $id, $lang['id']]);
     }
 
 

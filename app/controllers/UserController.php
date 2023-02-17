@@ -137,6 +137,24 @@ class UserController extends AppController
 
         $id = get('id');
         $lang = App::$app->getProperty('language');
+        $file = $this->model->get_user_file($id, $lang);
+        //dd($file, 1);
+        if($file) {
+            $path = WWW . "/downloads/{$file['filename']}";
+            if (file_exists($path)) {
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="' . basename($file['original_name']) . '"');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($path));
+                readfile($path);
+                exit();
+            } else {
+                $_SESSION['errors'] = ___('user_download_error');
+            }
+        }
+        redirect();
 
     }
 
