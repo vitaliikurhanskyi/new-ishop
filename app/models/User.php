@@ -24,6 +24,7 @@ class User extends AppModel
         'lengthMin' => [
             ['password', 6],
         ],
+        'optional' => ['email', 'password'],
     ];
 
     public array $labels = [
@@ -75,8 +76,9 @@ class User extends AppModel
 
     // methods from Model (test)
 
-    public function load($data)
+    public function load($post = true)
     {
+        $data = $post ? $_POST : $_GET;
         foreach ($this->attributes as $name => $value) {
             if(isset($data[$name])) {
                 $this->attributes[$name] = $data[$name];

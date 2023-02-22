@@ -18,28 +18,37 @@ class UserController extends AppController
         }
 
         if(!empty($_POST)) {
-            $data = $_POST;
+
             //dd($data, 1);
-            $this->model->load($data);
+            $this->model->load();
+            if(empty($this->model->attributes['password'])) {
+                unset($this->model->attributes['password']);
+            }
+            unset($this->model->attributes['email']);
             //dd($this->model->attributes, 1);
-            if(!$this->model->validate($data)) {
+            if(!$this->model->validate($this->model->attributes)) {
                 $this->model->getErrors();
             } else {
                 if(!empty($data['password'])) {
                     $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
                 }
-                if($this->model->save('user')) {
-                    $_SESSION['success'] = ___('user_signup_success_register');
+                if($this->model->update('user', $_SESSION['user']['id'])) {
+                    $_SESSION['success'] = ___('user_credentials_success');
+                    foreach ($this->model->attributes as $key => $value) {
+                        if (!empty($value) && $key != 'password') {
+                            $_SESSION['user'][$key] = $value;
+                        }
+                    }
                     //redirect(base_url());
                 } else {
-                    $_SESSION['errors'] = ___('user_signup_error_register');
+                    $_SESSION['errors'] = ___('user_credentials_error');
                 }
 
             }
             redirect();
         }
 
-        $this->setMeta(___('tpl_signup'));
+        $this->setMeta(___('user_credentials_title'));
     }
 
 
@@ -50,12 +59,11 @@ class UserController extends AppController
         }
 
         if(!empty($_POST)) {
-            $data = $_POST;
-            $this->model->load($data);
+            $this->model->load();
 //            dd($this->model->attributes, 1);
-            if(!$this->model->validate($data) || !$this->model->checkUnique()) {
+            if(!$this->model->validate($this->model->attributes) || !$this->model->checkUnique()) {
                 $this->model->getErrors();
-                $_SESSION['form_data'] = $data;
+                $_SESSION['form_data'] = $this->model->attributes;
             } else {
                 $this->model->attributes['password'] = password_hash($this->model->attributes['password'], PASSWORD_DEFAULT);
                 if($this->model->save('user')) {
