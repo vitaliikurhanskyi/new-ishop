@@ -1,6 +1,6 @@
 <?php
 
-use wfm\View;
+use core\View;
 
 /** @var $this View */
 ?>
