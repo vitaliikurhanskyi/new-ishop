@@ -15,7 +15,9 @@ class UserController extends AppController
             redirect(ADMIN);
         }
 
+        // шаблон
         $this->layout = 'login';
+
         if (!empty($_POST)) {
             if ($this->model->login(true)) {
                 $_SESSION['success'] = 'Вы успешно авторизованы';
@@ -38,5 +40,5 @@ class UserController extends AppController
         }
         redirect(ADMIN . '/user/login-admin');
     }
-
+    
 }
