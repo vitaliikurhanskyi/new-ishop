@@ -100,7 +100,6 @@ class CartController extends AppController
             $data['user_id'] = $user_id ?? $_SESSION['user']['id'];
             $data['note'] = post('note');
             $user_email = $_SESSION['user']['email'] ?? post('email');
-            //dd($data, 1);
 
             if(!$order_id = Order::saveOrder($data)) {
                 $_SESSION['errors'] = ___('cart_checkout_error_save_order');
