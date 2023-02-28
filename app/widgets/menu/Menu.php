@@ -18,7 +18,7 @@ class Menu
     protected $menuHtml;
     protected $tpl;
     protected $container = 'ul';
-    public $class = 'menu';
+    protected $class = 'menu';
     protected $cache = 3600;
     protected $cacheKey = 'ishop_menu';
     protected $attrs = [];
@@ -33,9 +33,9 @@ class Menu
     }
 
     protected function getOptions($options){
-        foreach($options as $key => $value){
-            if(property_exists($this, $key)){
-                $this->$key = $value;
+        foreach($options as $k => $v){
+            if(property_exists($this, $k)){
+                $this->$k = $v;
             }
         }
     }
@@ -45,11 +45,10 @@ class Menu
         $this->menuHtml = $cache->get("{$this->cacheKey}_{$this->language['code']}");
 
         if(!$this->menuHtml){
-//            $this->data = R::getAssoc("SELECT c.*, cd.* FROM category c
-//                        JOIN category_description cd
-//                        ON c.id = cd.category_id
-//                        WHERE cd.language_id = ?", [$this->language['id']]);
-
+            /*$this->data = R::getAssoc("SELECT c.*, cd.* FROM category c
+                        JOIN category_description cd
+                        ON c.id = cd.category_id
+                        WHERE cd.language_id = ?", [$this->language['id']]);*/
             $this->data = App::$app->getProperty("categories_{$this->language['code']}");
             $this->tree = $this->getTree();
             $this->menuHtml = $this->getMenuHtml($this->tree);
