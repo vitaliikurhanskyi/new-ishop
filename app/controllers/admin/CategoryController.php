@@ -1,11 +1,12 @@
 <?php
 
-
 namespace app\controllers\admin;
 
-
+use app\models\admin\Category;
+use core\App;
 use RedBeanPHP\R;
 
+/** @property Category $model */
 class CategoryController extends AppController
 {
 
@@ -42,9 +43,11 @@ class CategoryController extends AppController
     {
         if (!empty($_POST)) {
             if ($this->model->category_validate()) {
-                $_SESSION['success'] = 'Категория сохранена';
-            } else {
-
+                if ($this->model->save_category()) {
+                    $_SESSION['success'] = 'Категория сохранена';
+                } else {
+                    $_SESSION['errors'] = "Ошибка сохранения категории";
+                }
             }
             redirect();
         }

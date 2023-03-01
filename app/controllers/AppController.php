@@ -13,15 +13,15 @@ use RedBeanPHP\R;
 class AppController extends Controller
 {
 
-	public function __construct($route)
+    public function __construct($route)
     {
-		parent::__construct($route);
-		new AppModel();
+        parent::__construct($route);
+        new AppModel();
 
-		App::$app->setProperty('languages', Language::getLanguages());
-		App::$app->setProperty('language', Language::getLanguage(App::$app->getProperty('languages')));
-		//dd(App::$app->getProperty('languages'), 1);
-		//dd(App::$app->getProperty('language'), 1);
+        App::$app->setProperty('languages', Language::getLanguages());
+        App::$app->setProperty('language', Language::getLanguage(App::$app->getProperty('languages')));
+        //dd(App::$app->getProperty('languages'), 1);
+        //dd(App::$app->getProperty('language'), 1);
 
         //dd(App::$app->getProperties(), true);
 
@@ -48,6 +48,6 @@ class AppController extends Controller
         //debug(App::$app->getProperty('wishlist'), 1);
         App::$app->setProperty('current_action_page', $this->route['controller']);
         //dd(App::$app->getProperties(), 1);
-	}
+    }
 
 }
