@@ -23,6 +23,11 @@ function htmlchars($str)
     return htmlspecialchars($str);
 }
 
+function h($str)
+{
+    return htmlspecialchars($str);
+}
+
 function redirect($http = false)
 {
 	if($http) {
