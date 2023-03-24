@@ -28,8 +28,7 @@
                         <label class="required" for="price">Цена</label>
                         <input type="text" name="price" class="form-control" id="price" placeholder="Цена"
                                value="<?= $product[$key]['price'] ?>">
-                    </div>
-                </div>
+                    </div</div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="old_price">Старая цена</label>

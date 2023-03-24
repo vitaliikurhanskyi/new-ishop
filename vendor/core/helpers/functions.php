@@ -20,12 +20,12 @@ function dd($data, $exit = false)
 
 function htmlchars($str) 
 {
-    return htmlspecialchars($str);
+    return htmlspecialchars($str, ENT_QUOTES);
 }
 
 function h($str)
 {
-    return htmlspecialchars($str);
+    return htmlspecialchars($str, ENT_QUOTES);
 }
 
 function redirect($http = false)
