@@ -31,8 +31,8 @@ class DownloadController extends AppController
     public function addAction()
     {
         if (!empty($_POST)) {
-            dd($_POST);
-            dd($_FILES, 1);
+//            dd($_POST);
+//            dd($_FILES, 1);
             if ($this->model->download_validate()) {
                 if ($data = $this->model->upload_file()) {
                     if ($this->model->save_download($data)) {
